@@ -16,11 +16,12 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcFeeds"
-        android:name="com.example.instagramclonev2.fragments.InstagramFeeds"
-        android:layout_width="match_parent"
+        android:name="com.example.instagramclonev2.fragments.InstagramFeedsScroll"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bnv"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="64dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
