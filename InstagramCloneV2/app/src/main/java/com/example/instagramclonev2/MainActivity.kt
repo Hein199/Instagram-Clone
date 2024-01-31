@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.instagramclonev2.databinding.ActivityMainBinding
 import com.example.instagramclonev2.fragments.InstagramAdd
 import com.example.instagramclonev2.fragments.InstagramFeeds
+import com.example.instagramclonev2.fragments.InstagramFeedsScroll
 import com.example.instagramclonev2.fragments.InstagramProfile
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         view.bnv.setOnItemSelectedListener {
             when(it.itemId){
-                R.id.btnHome -> changeFragment(InstagramFeeds())
+                R.id.btnHome -> changeFragment(InstagramFeedsScroll())
                 R.id.btnAdd-> changeFragment(InstagramAdd())
                 R.id.btnProfile-> changeFragment(InstagramProfile())
                 else -> false

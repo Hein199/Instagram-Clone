@@ -3,24 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".fragments.InstagramFeeds">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcStories"
+        android:name="com.example.instagramclonev2.fragments.InstagramStory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fcLogo" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcLogo"
         android:name="com.example.instagramclonev2.fragments.InstagramLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="96dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcPosts"
         android:name="com.example.instagramclonev2.fragments.InstagramPost"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fcLogo"
-        tools:layout_editor_absoluteX="87dp" />
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fcStories" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
