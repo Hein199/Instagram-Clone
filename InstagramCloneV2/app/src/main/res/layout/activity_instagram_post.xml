@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="1000dp"
-    android:background="#00BCD4"
+    android:layout_height="wrap_content"
+    android:background="#EFE6E6"
     tools:context=".fragments.InstagramPost">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPostList"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Posts"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

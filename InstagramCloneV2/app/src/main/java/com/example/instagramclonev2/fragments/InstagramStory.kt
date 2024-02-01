@@ -32,7 +32,7 @@ class InstagramStory: Fragment() {
 
 
         view.rvStories.adapter = StoryAdapter(InstaStoriesList)
-        view.rvStories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true)
+        view.rvStories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         return view.root
     }
