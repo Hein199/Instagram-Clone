@@ -30,7 +30,7 @@ class PostAdapter(private val InstaPosts: MutableList<InstaPostsFB>)
             }
         })
         binding.heart.setOnClickListener {
-            val posts = InstaPosts[position]
+
 
             if (isLiked) {
                 binding.heart.setImageResource(R.drawable.baseline_favorite_border_24)

@@ -20,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
 
         view.btnLogin.setOnClickListener{
             view.btnLogin.isEnabled = false
-            Toast.makeText(this,"hi",Toast.LENGTH_SHORT).show()
             val email = view.tvEmail.text.toString()
             val password = view.tvPassword.text.toString()
             if (email.isBlank() || password.isBlank()) {
@@ -35,7 +34,6 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email,password).addOnCompleteListener{task ->
                 view.btnLogin.isEnabled = true
                 if (task.isSuccessful) {
-                    Toast.makeText(this,"Success", Toast.LENGTH_SHORT).show()
                     goMain()
                 }else{
                     Toast.makeText(this,"Fail", Toast.LENGTH_SHORT).show()
