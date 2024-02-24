@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "628676868098",
+    "project_id": "instagramclonev2-b150c",
+    "storage_bucket": "instagramclonev2-b150c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628676868098:android:4788c39e33cd86650d0f1b",
+        "android_client_info": {
+          "package_name": "com.example.instagramclonev2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTjdf75Y4_KedgxMXh2eE-4kTADpoipPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
