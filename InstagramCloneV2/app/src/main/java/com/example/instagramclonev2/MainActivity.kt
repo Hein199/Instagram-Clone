@@ -1,12 +1,11 @@
 package com.example.instagramclonev2
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.instagramclonev2.databinding.ActivityMainBinding
+import com.example.instagramclonev2.fragments.FragmentAddPost
 import com.example.instagramclonev2.fragments.InstagramAdd
-import com.example.instagramclonev2.fragments.InstagramFeeds
 import com.example.instagramclonev2.fragments.InstagramFeedsScroll
 import com.example.instagramclonev2.fragments.InstagramProfile
 
