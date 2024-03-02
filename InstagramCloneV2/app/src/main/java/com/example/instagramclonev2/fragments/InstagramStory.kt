@@ -45,6 +45,7 @@ class InstagramStory: Fragment() {
         stories = mutableListOf()
         currentUserStory = mutableListOf()
 
+
         firestoreDb = FirebaseFirestore.getInstance()
         val storyReference = firestoreDb.collection("stories")
             .whereNotEqualTo("user.email", getCurrentEmail())
