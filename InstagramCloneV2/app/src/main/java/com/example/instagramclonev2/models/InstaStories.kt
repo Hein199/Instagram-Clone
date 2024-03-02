@@ -1,9 +1,10 @@
 package com.example.instagramclonev2.models
 
 import android.media.Image
+import com.google.firebase.firestore.PropertyName
 
 data class InstaStories(
-    val userName: String,
-    val storyImg: String
+    var storyImageUrl: String = "",
+    var user: User? = null
 
 )

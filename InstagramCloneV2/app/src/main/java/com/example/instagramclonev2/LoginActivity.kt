@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,"Email or Password is empty.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             val auth = FirebaseAuth.getInstance()
 
             if (auth.currentUser != null) {
@@ -34,9 +35,13 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email,password).addOnCompleteListener{task ->
                 view.btnLogin.isEnabled = true
                 if (task.isSuccessful) {
+                    Toast.makeText(this,"Login Success", Toast.LENGTH_SHORT).show()
                     goMain()
+                    Log.i("Current user", "${auth.currentUser}")
                 }else{
-                    Toast.makeText(this,"Fail", Toast.LENGTH_SHORT).show()
+                    Log.e("LoginActivity", "Login failed", task.exception)
+                    Toast.makeText(this,"Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this,"Fail", Toast.LENGTH_SHORT).show()
                 }
             }
         }

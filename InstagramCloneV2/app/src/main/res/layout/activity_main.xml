@@ -9,14 +9,18 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="56dp"
+        android:background="#000000"
+        app:itemBackground="@drawable/transparent_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu"
         tools:layout_editor_absoluteX="1dp" />
 
+
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcFeeds"
-        android:name="com.example.instagramclonev2.fragments.InstagramFeedsScroll"
+        android:name="com.example.instagramclonev2.fragments.InstagramFeeds"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bnv"
