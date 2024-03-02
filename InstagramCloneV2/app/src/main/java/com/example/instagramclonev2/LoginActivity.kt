@@ -38,7 +38,9 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this,"Login Success", Toast.LENGTH_SHORT).show()
                     goMain()
                 }else{
-                    Toast.makeText(this,"Fail", Toast.LENGTH_SHORT).show()
+                    Log.e("LoginActivity", "Login failed", task.exception)
+                    Toast.makeText(this,"Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this,"Fail", Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -6,5 +6,6 @@ data class User (
     var follower: Int = 0,
     var following: Int = 0,
     var name: String = "",
+    var email: String = "",
     var profileImg: String = ""
 )

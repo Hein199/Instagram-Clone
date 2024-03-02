@@ -35,7 +35,7 @@
             android:name=".fragments.InstagramProfile"
             android:exported="false" />
         <activity
-            android:name=".fragments.InstagramAdd"
+            android:name=".fragments.FragmentAddPost"
             android:exported="false" />
         <activity
             android:name=".fragments.InstagramPost"
