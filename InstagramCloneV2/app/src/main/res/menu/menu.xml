@@ -6,17 +6,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/baseline_home_24"
-        android:title="feeds" />
+        android:title="   " />
     <item
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/baseline_add_box_24"
-        android:title="Add" />
+        android:icon="@drawable/outline_add_box_24"
+        android:title="   " />
     <item
         android:id="@+id/btnProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Profile" />
+        android:icon="@drawable/baseline_account_box_24"
+        android:title="   " />
 </menu>

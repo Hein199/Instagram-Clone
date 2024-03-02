@@ -6,8 +6,21 @@
     android:layout_height="wrap_content"
     tools:context=".fragments.InstagramStory">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvStories"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvOwnStory"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStories"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
