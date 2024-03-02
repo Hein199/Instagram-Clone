@@ -10,12 +10,20 @@ import com.example.instagramclonev2.adapters.PostAdapter
 import com.example.instagramclonev2.databinding.ActivityInstagramPostBinding
 import com.example.instagramclonev2.models.InstaPosts
 import com.example.instagramclonev2.models.InstaPostsFB
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class InstagramPost: Fragment() {
     private lateinit var view: ActivityInstagramPostBinding
     private lateinit var firestoreDb: FirebaseFirestore
     private lateinit var posts: MutableList<InstaPostsFB>
+
+    private fun getCurrentEmail(): String? {
+        val auth = FirebaseAuth.getInstance()
+        return auth.currentUser?.email
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,13 +33,19 @@ class InstagramPost: Fragment() {
     ): View {
         posts = mutableListOf()
         firestoreDb = FirebaseFirestore.getInstance()
-        val postReference = firestoreDb.collection("posts").limit(20)
+        val currentUserEmail = getCurrentEmail()
+        Log.i("current user id ", "${getCurrentEmail()}")
+        val postReference = firestoreDb.collection("posts")
+            .whereNotEqualTo("user.email", currentUserEmail)
+            //.orderBy("created_at", Query.Direction.DESCENDING)
+        Log.i("post referenece from instagram post", "${postReference}" )
         postReference.addSnapshotListener { snapshot, exception ->
             if (exception != null || snapshot == null) {
                 Log.e("Instagram Post", "Exception", exception)
                 return@addSnapshotListener
             }
             val postList = snapshot.toObjects(InstaPostsFB::class.java)
+            postList.sortByDescending { it.creationTimeMs }
             posts.clear()
             posts.addAll(postList)
             view.rvPostList.adapter?.notifyDataSetChanged()
@@ -43,9 +57,4 @@ class InstagramPost: Fragment() {
         view.rvPostList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         return view.root
     }
-
-
-
-
-
 }

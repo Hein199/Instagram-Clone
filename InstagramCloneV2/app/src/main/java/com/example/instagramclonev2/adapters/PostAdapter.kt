@@ -1,4 +1,5 @@
 package com.example.instagramclonev2.adapters
+
 import android.text.format.DateUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,44 +12,65 @@ import com.example.instagramclonev2.R
 import com.example.instagramclonev2.databinding.InstagramPostItemBinding
 import com.example.instagramclonev2.models.InstaPostsFB
 
-class PostAdapter(private val InstaPosts: MutableList<InstaPostsFB>)
-    : RecyclerView.Adapter<PostAdapter.RecyclerViewHolder>() {
-    class RecyclerViewHolder ( val binding: InstagramPostItemBinding) : RecyclerView.ViewHolder(binding.root)
-    private var isLiked = false
+class PostAdapter(private val InstaPosts: MutableList<InstaPostsFB>) :
+    RecyclerView.Adapter<PostAdapter.RecyclerViewHolder>() {
+
+    class RecyclerViewHolder(val binding: InstagramPostItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
-        val binding = InstagramPostItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
-
-        val zoomInAnim = AnimationUtils.loadAnimation(parent.context, R.anim.zoom_in)
-
-        binding.ivPostImg.setOnClickListener(object : DoubleClickListener() {
-            override fun onDoubleClick(v: View?) {
-                binding.heart.setImageResource(R.drawable.baseline_favorite_small_red)
-                binding.insideHeart.startAnimation(zoomInAnim)
-                isLiked = true
-            }
-        })
-        binding.heart.setOnClickListener {
-
-
-            if (isLiked) {
-                binding.heart.setImageResource(R.drawable.baseline_favorite_border_24)
-            } else {
-                binding.heart.setImageResource(R.drawable.baseline_favorite_small_red)
-                binding.insideHeart.startAnimation(zoomInAnim)
-            }
-
-            isLiked = !isLiked
-        }
+        val binding =
+            InstagramPostItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecyclerViewHolder(binding)
     }
 
+    private fun likePost(post: InstaPostsFB, isLiked: Boolean, holder: RecyclerViewHolder) {
+        val zoomInAnim = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.zoom_in)
+        if (isLiked) {
+            post.likes++
+            holder.binding.tvLikeCount.text = post.likes.toString()
+            holder.binding.heart.setImageResource(R.drawable.baseline_favorite_small_red)
+            holder.binding.insideHeart.startAnimation(zoomInAnim)
+        } else {
+            post.likes--
+            holder.binding.tvLikeCount.text = post.likes.toString()
+            holder.binding.heart.setImageResource(R.drawable.baseline_favorite_border_24)
+        }
+    }
+
+    override fun getItemCount(): Int = InstaPosts.size
+
+    override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
+        val post = InstaPosts[position]
+        var isLiked = false
+        holder.binding.tvLikeCount.text = post.likes.toString()
+        holder.binding.heart.setImageResource(if (isLiked) R.drawable.baseline_favorite_small_red else R.drawable.baseline_favorite_border_24)
+        holder.binding.tvPostUserName.text = post.user?.name
+        holder.binding.tvUserPostName.text = post.user?.name
+        holder.binding.ivUserPostImg.load(post.user?.profileImg)
+        holder.binding.ivPostImg.load(post.imageUrl)
+        holder.binding.tvPostCaption.text = post.caption
+        holder.binding.tvRelativeTime.text = DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
+
+        holder.binding.ivPostImg.setOnClickListener(object : DoubleClickListener() {
+            override fun onDoubleClick(v: View?) {
+                if (!isLiked) {
+                    isLiked = true
+                    likePost(post, isLiked, holder)
+                }
+            }
+        })
+
+        holder.binding.heart.setOnClickListener {
+            isLiked = !isLiked
+            likePost(post, isLiked, holder)
+        }
+    }
+
     abstract class DoubleClickListener : View.OnClickListener {
-        private var lastClickTime : Long = 0
+        private var lastClickTime: Long = 0
         companion object {
             private const val DOUBLE_CLICK_TIME_DELTA = 300
-
         }
 
         override fun onClick(v: View?) {
@@ -58,20 +80,7 @@ class PostAdapter(private val InstaPosts: MutableList<InstaPostsFB>)
             }
             lastClickTime = clickTime
         }
+
         abstract fun onDoubleClick(v: View?)
-    }
-
-    override fun getItemCount(): Int = InstaPosts.size
-
-    override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        Log.i("Post adapter", "Hi")
-        val post = InstaPosts[position]
-        holder.binding.tvPostUserName.text = post.user?.name
-        holder.binding.tvUserPostName.text = post.user?.name
-        holder.binding.ivUserPostImg.load(post.user?.profileImg)
-        holder.binding.ivPostImg.load(post.imageUrl)
-        holder.binding.tvLikeCount.text = post.likes.toString()
-        holder.binding.tvPostCaption.text = post.caption
-        holder.binding.tvRelativeTime.text = DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
     }
 }
