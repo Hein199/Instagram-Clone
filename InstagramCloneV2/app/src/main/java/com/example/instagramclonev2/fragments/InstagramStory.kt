@@ -30,7 +30,6 @@ class InstagramStory: Fragment() {
     ): View {
         view = ActivityInstagramStoryBinding.inflate(inflater, container, false)
 
-
         view.rvStories.adapter = StoryAdapter(InstaStoriesList)
         view.rvStories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
