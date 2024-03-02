@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.instagramclonev2.databinding.ItemPhotoBinding
 import com.example.instagramclonev2.models.ProfilePost
 import coil.load
+import com.example.instagramclonev2.models.InstaPostsFB
 
-class PhotoAdapter(private val profilePosts: List<ProfilePost>)
+class PhotoAdapter(private val profilePosts: MutableList<InstaPostsFB>)
     : RecyclerView.Adapter<PhotoAdapter.RecyclerViewHolder>() {
 
     class RecyclerViewHolder(val binding: ItemPhotoBinding) : RecyclerView.ViewHolder(binding.root)
@@ -22,6 +23,6 @@ class PhotoAdapter(private val profilePosts: List<ProfilePost>)
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val post = profilePosts[position]
-        holder.binding.ivPostPhoto.load(post.profileImg)
+        holder.binding.ivPostPhoto.load(post.imageUrl)
     }
 }
