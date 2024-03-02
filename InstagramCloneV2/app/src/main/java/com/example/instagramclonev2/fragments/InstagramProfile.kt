@@ -13,11 +13,12 @@ import com.example.instagramclonev2.models.ProfilePost
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import coil.load
+import com.example.instagramclonev2.models.InstaPostsFB
 
 class InstagramProfile : Fragment() {
     private lateinit var viewBinding: ActivityInstagramProfileBinding
     private lateinit var firestoreDb: FirebaseFirestore
-    private lateinit var profileposts: MutableList<ProfilePost>
+    private lateinit var profileposts: MutableList<InstaPostsFB>
     private lateinit var auth: FirebaseAuth
     private lateinit var photoAdapter: PhotoAdapter
     private var countPost: Int = 0
@@ -99,13 +100,15 @@ class InstagramProfile : Fragment() {
                 Log.e("Count post", "$countPost")
                 // Clear previous posts
                 profileposts.clear()
+                val posts  = querySnapshot.toObjects(InstaPostsFB::class.java)
+                profileposts.addAll(posts)
 
-                for (document in querySnapshot.documents) {
-                    val profileImg = document.getString("image_url")
-                    profileImg?.let {
-                        profileposts.add(ProfilePost(it))
-                    }
-                }
+//                for (document in querySnapshot.documents) {
+//                    val profileImg = document.getString("image_url")
+//                    profileImg?.let {
+//                        profileposts.add(ProfilePost(it))
+
+                profileposts.sortByDescending { it.creationTimeMs }
 
                 // Notify adapter that data set has changed
                 photoAdapter.notifyDataSetChanged()
