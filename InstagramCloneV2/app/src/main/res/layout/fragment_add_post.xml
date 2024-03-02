@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".fragments.FragmentAddPost">
 
     <LinearLayout
@@ -14,6 +15,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:text="Upload"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/ivPreview"
@@ -31,47 +43,35 @@
             android:ems="10"
             android:hint="Add a caption"
             android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#5A5A5A"
             android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="72dp"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/ibGallery"
-                android:layout_width="88dp"
-                android:layout_height="88dp"
-                android:layout_marginStart="84dp"
-                android:layout_marginEnd="32dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/custom_button"
                 android:scaleType="centerCrop"
                 android:src="@android:drawable/ic_menu_gallery" />
 
             <ImageButton
                 android:id="@+id/ibCamera"
-                android:layout_width="88dp"
-                android:layout_height="88dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="80dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/custom_button"
                 android:scaleType="centerCrop"
                 android:src="@android:drawable/ic_menu_camera" />
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnUpload"
-            style="@style/Widget.Material3.Button.ElevatedButton"
-            android:layout_width="240dp"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="0dp"
-            android:text="Upload Post"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="20sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
