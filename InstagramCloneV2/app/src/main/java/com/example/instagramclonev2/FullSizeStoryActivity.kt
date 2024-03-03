@@ -22,9 +22,9 @@ class FullSizeStoryActivity : AppCompatActivity() {
         val userName = intent.getStringExtra("user_name")
         val profileImg = intent.getStringExtra("profile_img")
         Log.e("Insta story from full size", "$profileImg")
-        view.ivInstaStory.load(imageUrl)
+        view.ivStoryImg.load(profileImg)
         view.tvUserName.text = userName.toString()
-        view.ivInstaStory.load(profileImg)
+        view.ivInstaStory.load(imageUrl)
         setupExitButton()
         startCountdownTimer()
     }
