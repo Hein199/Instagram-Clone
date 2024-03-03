@@ -29,9 +29,9 @@ class LoginActivity : AppCompatActivity() {
 
             val auth = FirebaseAuth.getInstance()
 
-            if (auth.currentUser != null) {
-                goMain()
-            }
+            // if (auth.currentUser != null) {
+            //     goMain()
+            // }
             auth.signInWithEmailAndPassword(email,password).addOnCompleteListener{task ->
                 view.btnLogin.isEnabled = true
                 if (task.isSuccessful) {
